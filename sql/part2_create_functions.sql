@@ -149,7 +149,7 @@ begin
         from
             ttt.pubs_reviewer_rating r
         join ttt.pubs p on p.id = r.pub_id
-        join lateral (
+        left join lateral (
             select
                 c.id,
                 c.name
