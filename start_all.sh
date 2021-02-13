@@ -34,6 +34,7 @@ PGPASSWORD=${POSTGRES_PASS} psql \
 list_sqls_ordered=(
     'part1_create_tables.sql' 'part1_create_functions.sql'
     'part2_create_tables.sql' 'part2_create_functions.sql'
+    'part3_create_tables.sql' 'part3_create_functions.sql'
 )
 for f in ${list_sqls_ordered[*]}; do
         PGPASSWORD=${POSTGRES_PASS} psql \
