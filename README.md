@@ -66,53 +66,38 @@ select * from ttt.get_nearest_pubs_with_miles('(-0.728899, 51.012099)', 10);
 - A query result example: https://share.sqltabs.com/api/1.0/docs/142db96cfec289cc11f5e24c6e08d31f?echo=true
 
 
-# Part 2: Ratings
+# Part 3: Comments
 
-## 1. Store rating
-To more details, [check here](https://github.com/willyrgf/ttt-pubs-uk/blob/9b76c7ba6d306041fda47d93a731f553412d0267/sql/part2_create_functions.sql#L5)
+## 1. Store comments
+To more details, [check here](https://github.com/willyrgf/ttt-pubs-uk/blob/0eb1f2d8ba8844f038b2ba1d5f7cb76303fc01bd/sql/part3_create_functions.sql#L42)
 
 ```sql
 /*
-store_pub_rating is a function to store the pub rating by our reviewer with
-two input args:
-    v_name citext: the name of the pub
-    v_rating numeric: the rating to the pub
+store_comment is a function to store a comment from a user 
+in the ttt.pubs_user_comments table with three args:
+    v_username citext: the username of the user
+    v_pub_name citext: the name of the pub
+    v_comment character(140): the comment
 and one output arg:
-    v_return uuid: the uuid of the rating pub inserted
+    v_return uuid: the uuid of the pub inserted
 */
 
-select ttt.store_pub_rating('Simmons', 93);
+select ttt.store_comment('willy', 'simmons', 'its my comment, idk what i can say, because i never have had');
 ```
 
-## 2. Highest rated pub with city
-To more details, [check here](https://github.com/willyrgf/ttt-pubs-uk/blob/9b76c7ba6d306041fda47d93a731f553412d0267/sql/part2_create_functions.sql#L110)
+## 2. Get recent comments of a pub
+To more details, [check here](https://github.com/willyrgf/ttt-pubs-uk/blob/0eb1f2d8ba8844f038b2ba1d5f7cb76303fc01bd/sql/part3_create_functions.sql#L110)
 
 ```sql
 /*
-get_highest_rated_pubs_with_cities is a function to get the pub highest rated 
-by our reviewer with one arg:
-    v_quantity numeric: the number of pubs retrivied, default is 1
+get_recents_comments is a function to get the recent comments of the pubs
+by our users with two args:
+    v_pub_name citext: the name of the pub
+    v_interval interval: the interval of time that we will get comments 
+    default is '1 week'
 */
 
-select * from ttt.get_highest_rated_pubs_with_cities();
+select * from ttt.get_recents_comments('simmons');
 ```
 
-- A query result example: https://share.sqltabs.com/api/1.0/docs/d8abe2638151b9e09ed86d8ab17c0bcf?echo=true
-
-## 3. Highest rated pubs in a city
-To more details, [check here](https://github.com/willyrgf/ttt-pubs-uk/blob/9b76c7ba6d306041fda47d93a731f553412d0267/sql/part2_create_functions.sql#L179)
-
-```sql
-/*
-get_highest_pubs_in_a_city is a function to get the pub highest rated 
-by our reviewer in a city with two args:
-    v_name citext: the name of the city of the user
-    v_quantity numeric: the number of pubs retrivied, default is 3
-*/
-
-select * from ttt.get_highest_pubs_in_a_city('london');
-```
-
-- A query result example: https://share.sqltabs.com/api/1.0/docs/cac4574c7e2b777c5b9f4dcf56274351?echo=true
-
-
+- A query result example: https://sql.cryp.com.br/api/1.0/docs/a6d8d616a71c3b1d18e30453afba0e39?echo=true
