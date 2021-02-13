@@ -1,0 +1,14 @@
+version: '3.1'
+
+services:
+
+  db-ttt:
+    image: kartoza/postgis:13.0
+    ports:
+        - "54325:5432"
+    restart: always
+    environment:
+      ALLOW_IP_RANGE: '0.0.0.0/0'
+      PASSWORD_AUTHENTICATION: 'md5'
+      POSTGRES_USER: postgres
+      POSTGRES_PASS: example
