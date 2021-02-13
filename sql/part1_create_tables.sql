@@ -1,6 +1,6 @@
 -- drop all before
-drop table if exists ttt.cities;
-drop table if exists ttt.pubs;
+drop table if exists ttt.cities cascade;
+drop table if exists ttt.pubs cascade;
 
 -- create the table and indexes
 create table ttt.cities (
