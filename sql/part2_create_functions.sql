@@ -178,6 +178,7 @@ drop function if exists ttt.get_highest_pubs_in_a_city;
 /*
 get_highest_pubs_in_a_city is a function to get the pub highest rated 
 by our reviewer in a city with two args:
+    v_name citext: the name of the city of the user
     v_quantity numeric: the number of pubs retrivied, default is 3
 */
 create or replace function ttt.get_highest_pubs_in_a_city(
