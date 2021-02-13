@@ -31,7 +31,10 @@ PGPASSWORD=${POSTGRES_PASS} psql \
     -p ${POSTGRES_PORT} < sql/init_database.sql || exit 1
 
 # create all tables and functions
-list_sqls_ordered=('part1_create_tables.sql' 'part1_create_functions.sql')
+list_sqls_ordered=(
+    'part1_create_tables.sql' 'part1_create_functions.sql'
+    'part2_create_tables.sql' 'part2_create_functions.sql'
+)
 for f in ${list_sqls_ordered[*]}; do
         PGPASSWORD=${POSTGRES_PASS} psql \
         -U${POSTGRES_USER} \
