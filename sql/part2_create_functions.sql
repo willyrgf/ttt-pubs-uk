@@ -81,7 +81,6 @@ begin
         v_quantity;
     end if;
 
-
     return query (
         select
             r.id,
@@ -134,7 +133,6 @@ begin
         raise exception 'v_quantity input arg must be greater than 0: %',
         v_quantity;
     end if;
-
 
     return query (
         select
