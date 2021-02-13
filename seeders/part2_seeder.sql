@@ -1,0 +1,10 @@
+select ttt.store_pub_rating('Duke of cumberland', 50);
+select ttt.store_pub_rating('King of Prussia', 97);
+select ttt.store_pub_rating('The Catcher in the Rye', 80);
+select ttt.store_pub_rating('The Tally Ho', 91);
+select ttt.store_pub_rating('Simmons', 93);
+select ttt.store_pub_rating('The White Horse', 78);
+select ttt.store_pub_rating('Kings Arms', 58);
+select ttt.store_pub_rating('The Wheatsheaf', 98);
+select ttt.store_pub_rating('The Flying Bull', 38);
+select ttt.store_pub_rating('Hamilton Arms', 38);
