@@ -9,9 +9,11 @@ POSTGRES_HOST='127.0.0.1'
 POSTGRES_PORT='54325'
 POSTGRES_DBNAME='pubsuk'
 SQL_DIR="sql"
+SEEDERS_DIR="seeders"
 
 # if not exist sql dir
 [ -d ${SQL_DIR} ] || exit 1
+[ -d ${SEEDERS_DIR} ] || exit 1
 
 # if you will use docker-compose, check if exist
 if ${USE_DOCKERCOMPOSER} && ! command -v docker-compose > /dev/null ; then
@@ -60,4 +62,18 @@ awk -F '\t' '{print $2 "\t" $3}' data/pubs.tsv |
     -p ${POSTGRES_PORT} \
     -d ${POSTGRES_DBNAME} \
     -c "copy ttt.pubs(location, name) from stdin delimiter E'\t'"
+
+
+# create all tables and functions
+list_seeders_ordered=(
+    'part2_seeder.sql'
+    'part3_seeder.sql'
+)
+for f in ${list_seeders_ordered[*]}; do
+        PGPASSWORD=${POSTGRES_PASS} psql \
+        -U${POSTGRES_USER} \
+        -h${POSTGRES_HOST} \
+        -p ${POSTGRES_PORT} \
+        -d ${POSTGRES_DBNAME} < "${SEEDERS_DIR}/${f}" || exit 1
+done
 
