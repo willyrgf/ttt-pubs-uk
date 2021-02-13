@@ -64,3 +64,55 @@ select * from ttt.get_nearest_pubs_with_miles('(-0.728899, 51.012099)', 10);
 ```
 
 - A query result example: https://share.sqltabs.com/api/1.0/docs/142db96cfec289cc11f5e24c6e08d31f?echo=true
+
+
+# Part 2: Ratings
+
+## 1. Store rating
+To more details, [check here](https://github.com/willyrgf/ttt-pubs-uk/blob/9b76c7ba6d306041fda47d93a731f553412d0267/sql/part2_create_functions.sql#L5)
+
+```sql
+/*
+store_pub_rating is a function to store the pub rating by our reviewer with
+two input args:
+    v_name citext: the name of the pub
+    v_rating numeric: the rating to the pub
+and one output arg:
+    v_return uuid: the uuid of the rating pub inserted
+*/
+
+select ttt.store_pub_rating('Simmons', 93);
+```
+
+## 2. Highest rated pub with city
+To more details, [check here](https://github.com/willyrgf/ttt-pubs-uk/blob/9b76c7ba6d306041fda47d93a731f553412d0267/sql/part2_create_functions.sql#L110)
+
+```sql
+/*
+get_highest_rated_pubs_with_cities is a function to get the pub highest rated 
+by our reviewer with one arg:
+    v_quantity numeric: the number of pubs retrivied, default is 1
+*/
+
+select * from ttt.get_highest_rated_pubs_with_cities();
+```
+
+- A query result example: https://share.sqltabs.com/api/1.0/docs/d8abe2638151b9e09ed86d8ab17c0bcf?echo=true
+
+## 3. Highest rated pubs in a city
+To more details, [check here](https://github.com/willyrgf/ttt-pubs-uk/blob/9b76c7ba6d306041fda47d93a731f553412d0267/sql/part2_create_functions.sql#L179)
+
+```sql
+/*
+get_highest_pubs_in_a_city is a function to get the pub highest rated 
+by our reviewer in a city with two args:
+    v_name citext: the name of the city of the user
+    v_quantity numeric: the number of pubs retrivied, default is 3
+*/
+
+select * from ttt.get_highest_pubs_in_a_city('london');
+```
+
+- A query result example: https://share.sqltabs.com/api/1.0/docs/cac4574c7e2b777c5b9f4dcf56274351?echo=true
+
+
