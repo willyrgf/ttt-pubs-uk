@@ -53,11 +53,11 @@ create or replace function ttt.get_nearest_pubs(
     v_quantity numeric default 5
 )
 returns table (
-  id uuid,
-  name citext,
-  location point,
-  created_at timestamp with time zone,
-  deleted_at timestamp with time zone
+     id uuid,
+     name citext,
+     location point,
+     created_at timestamp with time zone,
+     deleted_at timestamp with time zone
 )
 language plpgsql
 as $$
@@ -106,12 +106,12 @@ create or replace function ttt.get_nearest_pubs_with_miles(
     v_quantity numeric default 5
 )
 returns table (
-  id uuid,
-  name citext,
-  location point,
-  approx_miles numeric,
-  created_at timestamp with time zone,
-  deleted_at timestamp with time zone
+    id uuid,
+    name citext,
+    location point,
+    approx_miles numeric,
+    created_at timestamp with time zone,
+    deleted_at timestamp with time zone
 )
 language plpgsql
 as $$
