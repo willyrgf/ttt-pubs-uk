@@ -32,8 +32,7 @@ and one output arg:
 select ttt.create_pub('Wills Pub', '(-0.126666,51.66666)');
 ```
 
-## 2. Get 5 nearest pubs to their location
-### For get nearest pubs
+## 2. For get 5 nearest pubs
 To more details, [check here](https://github.com/willyrgf/ttt-pubs-uk/blob/2fdbdd2fce8a69e56100f0d97db7e64c37c0b0b7/sql/part1_create_functions.sql#L46)
 
 ```sql
@@ -49,8 +48,7 @@ select * from ttt.get_nearest_pubs('(-0.728899, 51.012099)', 5);
 
 - A query result example: https://share.sqltabs.com/api/1.0/docs/0912bbff7ebc29751e379bbe39af53f4?echo=true
 
-## 3. Get 5 nearest pubs to their location with miles (Bonus)
-### For get nearest pubs with miles
+## 3. For get 5 nearest pubs with miles (Bonus)
 To more details, [check here](https://github.com/willyrgf/ttt-pubs-uk/blob/2fdbdd2fce8a69e56100f0d97db7e64c37c0b0b7/sql/part1_create_functions.sql#L98)
 
 ```sql
