@@ -35,6 +35,8 @@ create materialized view ttt.pubs_user_rating_avg as (
 create unique index idx_unique_pubs_user_rating_avg on ttt.pubs_user_rating_avg(pub_id, pub_name);
 
 -- create a cron job to refresh the materialized view
+    -- depend on the volume of the data, we can create a function to check if
+    -- have some refresh materialized running before run a new on
 \c gis;
 insert into
   cron.job(
