@@ -102,6 +102,36 @@ select * from ttt.get_recents_comments('simmons');
 
 - A query result example: https://sql.cryp.com.br/api/1.0/docs/a6d8d616a71c3b1d18e30453afba0e39?echo=true
 
+## 3. Changes to 1M per week
+I think that the way I structured the database, the indexes and the researches, will not be a problem to work with this volume od data for a long time.
+
+But, imagining that in the future that data volume may grow even more, I believe that a good solution would be using partitioning and pg_partman to help with maintenance one partition per week.
+
+We can have something like that:
+
+```sql
+-- create of the table with partitioning
+create table ttt.pubs_user_comments(
+    id uuid default uuid_generate_v4(),
+    user_id uuid,
+    pub_id uuid,
+    comment character(140),
+    created_at timestamp with time zone default now(),
+    primary key (id),
+    constraint fk_pubs_user_comment_user foreign key (user_id) references ttt.users(id),
+    constraint fk_pubs_user_comment_pub foreign key (pub_id) references ttt.pubs(id)
+)
+partition by range (created_at);
+create index idx_pubs_user_comments_created_at on ttt.pubs_user_comments (created_at desc nulls last);
+create index idx_pubs_user_comments_created_at_pub_id on ttt.pubs_user_comments (created_at desc nulls last, pub_id);
+
+-- create the pg_partman template table
+create table ttt.pubs_user_comments_template (like ttt.pubs_user_comments);
+alter table ttt.pubs_user_comments_template add primary key(id);
+
+-- create the partitions (one per week) using pg_partman 
+select partman.create_parent('ttt.pubs_user_comments', 'created_at', 'native', 'weekly', p_template_table => 'ttt.pubs_user_comments_template');
+```
 
 # Part 4: User rating
 
