@@ -235,7 +235,7 @@ select ttt.store_user_pub_rating('willy','Duke of cumberland', 70);
 ```
 
 ## 2. A fast way to compute the avg of the rating
-To more details, [check here](https://github.com/willyrgf/ttt-pubs-uk/blob/5d8f6a1d7fc4e4b565e3172cceef51ca06823e61/sql/part4_create_tables.sql#L20)
+To more details, [check here](https://github.com/willyrgf/ttt-pubs-uk/blob/34ccec52986b7652e496517188bd833fb2238dd6/sql/part4_create_tables.sql#L20)
 
 I think a good way to solve this problem is to use materialized view with indexes and refresh via pg_cron from x to x time.
 That's how I solved the problem, to check:
