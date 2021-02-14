@@ -69,6 +69,7 @@ awk -F '\t' '{print $2 "\t" $3}' data/pubs.tsv |
 list_seeders_ordered=(
     'part2_seeder.sql'
     'part3_seeder.sql'
+    'part4_seeder.sql'
 )
 for f in ${list_seeders_ordered[*]}; do
         PGPASSWORD=${POSTGRES_PASS} psql \
