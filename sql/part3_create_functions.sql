@@ -68,8 +68,16 @@ begin
         raise exception 'length of v_comment must be greater than 10: %', v_comment;
     end if;
 
-    v_user_id := (select u.id from ttt.users u where u.username = v_username);
-    v_pub_id := (select p.id from ttt.pubs p where p.name = v_pub_name limit 1);
+    v_user_id := (
+        select u.id 
+        from ttt.users u 
+        where u.username = v_username and u.deleted_at is null
+    );
+    v_pub_id := (
+        select p.id 
+        from ttt.pubs p 
+        where p.name = v_pub_name and p.deleted_at is null limit 1
+    );
 
     if v_user_id is null then
         raise exception 'v_username doesnt exist: %', v_username;
