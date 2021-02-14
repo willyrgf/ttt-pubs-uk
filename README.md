@@ -112,19 +112,19 @@ select ttt.store_pub_rating('King of Prussia', 97);
 ```
 
 ## 2. Highest rated and in which city
-To more details, [check here](https://github.com/willyrgf/ttt-pubs-uk/blob/5d8f6a1d7fc4e4b565e3172cceef51ca06823e61/sql/part2_create_functions.sql#L60)
+To more details, [check here](https://github.com/willyrgf/ttt-pubs-uk/blob/5d8f6a1d7fc4e4b565e3172cceef51ca06823e61/sql/part2_create_functions.sql#L110)
 
 ```sql
 /*
-get_highest_rated_pubs is a function to get the pub highest rated 
+get_highest_rated_pubs_with_cities is a function to get the pub highest rated 
 by our reviewer with one arg:
     v_quantity numeric: the number of pubs retrivied, default is 1
 */
 
-select * from ttt.get_highest_rated_pubs();
+select * from ttt.get_highest_rated_pubs_with_cities();
 ```
 
-- A query result example: https://sql.cryp.com.br/api/1.0/docs/686bc8da096843fbcd768e74717fd39b?echo=true
+- A query result example: https://sql.cryp.com.br/api/1.0/docs/de1fc43e37e969be571bb39f95bcd172?echo=true
 
 ## 3. Top 3 pubs in a city
 To more details, [check here](https://github.com/willyrgf/ttt-pubs-uk/blob/5d8f6a1d7fc4e4b565e3172cceef51ca06823e61/sql/part2_create_functions.sql#L179)
