@@ -105,7 +105,11 @@ select * from ttt.get_recents_comments('simmons');
 ## 3. Changes to 1M per week
 I think that the way I structured the database, the indexes and the researches, will not be a problem to work with this volume od data for a long time.
 
-But, imagining that in the future that data volume may grow even more, I believe that a good solution would be using partitioning and pg_partman to help with maintenance one partition per week.
+- To more details about the structure: [check here](https://github.com/willyrgf/ttt-pubs-uk/blob/41fb7ba6bfc15dec21f02b272696dde6c83a6ff7/sql/part3_create_tables.sql#L17)
+
+- To more details about the researches: [check here](https://github.com/willyrgf/ttt-pubs-uk/blob/41fb7ba6bfc15dec21f02b272696dde6c83a6ff7/sql/part3_create_functions.sql#L112)
+
+But, imagining that in the future that data volume may grow even more, I believe that a good solution would be using partitioning and pg_partman to help with maintenance of the one partition per week.
 
 We can have something like that:
 
