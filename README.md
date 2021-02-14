@@ -101,3 +101,36 @@ select * from ttt.get_recents_comments('simmons');
 ```
 
 - A query result example: https://sql.cryp.com.br/api/1.0/docs/a6d8d616a71c3b1d18e30453afba0e39?echo=true
+
+
+# Part 4: User rating
+
+## 1. Store ratings
+To more details, [check here](https://github.com/willyrgf/ttt-pubs-uk/blob/607097771646baddb191e3a8883ea711dc71a794/sql/part4_create_functions.sql#L6)
+
+```sql
+/*
+store_user_pub_rating is a function to store the pub rating by our users 
+with three input args:
+    v_username citext: the username of user
+    v_pub_name citext: the name of the pub
+    v_rating numeric: the rating to the pub
+and one output arg:
+    v_return uuid: the uuid of the rating pub inserted
+*/
+
+select ttt.store_user_pub_rating('willy','Duke of cumberland', 70);
+```
+
+## 2. A fast way to compute the avg of the rating
+To more details, [check here](https://github.com/willyrgf/ttt-pubs-uk/blob/607097771646baddb191e3a8883ea711dc71a794/sql/part4_create_tables.sql#L20)
+
+I think a good way to solve this problem is to use materialized view with indexes and refresh via pg_cron from x to x time.
+That's how I solved the problem, to check:
+
+```sql
+select * from ttt.pubs_user_rating_avg;
+```
+
+- A query result example: https://sql.cryp.com.br/api/1.0/docs/bbb9d2736022fa41cc787cc82c461c7a?echo=true
+
