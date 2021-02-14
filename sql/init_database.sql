@@ -6,7 +6,7 @@ create database pubsuk;
 \c pubsuk;
 
 -- create schema
-drop schema if exists ttt;
+drop schema if exists ttt cascade;
 create schema ttt;
 
 -- create extension to uuid functions
