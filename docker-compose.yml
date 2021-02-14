@@ -12,3 +12,4 @@ services:
       PASSWORD_AUTHENTICATION: 'md5'
       POSTGRES_USER: postgres
       POSTGRES_PASS: example
+      SHARED_PRELOAD_LIBRARIES: 'pg_cron'
