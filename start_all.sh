@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 USE_DOCKERCOMPOSER=true
+[[ "$1" = '-s' ]] && USE_DOCKERCOMPOSER=false
 SERVICE='db-ttt'
 
 POSTGRES_USER='postgres'
