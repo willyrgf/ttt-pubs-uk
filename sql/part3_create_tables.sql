@@ -1,6 +1,6 @@
 -- drop all before
+drop table if exists ttt.users cascade;
 drop table if exists ttt.pubs_user_comments;
-drop table if exists ttt.users;
 
 -- create the table and indexes
 create table ttt.users(
@@ -10,6 +10,7 @@ create table ttt.users(
     deleted_at timestamp with time zone default null,
     primary key (id)
 );
+create unique index idx_users_username_deleted_at on ttt.users (username) where deleted_at is null;
 create index idx_users_deleted_at on ttt.users (deleted_at desc nulls last);
 create index idx_users_username on ttt.users(username);
 
