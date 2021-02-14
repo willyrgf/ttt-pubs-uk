@@ -24,9 +24,9 @@ sudo ./start_all.sh -s
 ```
 
 
---
+---
 
-# More details of the each question
+# More details of the each question:
 
 # Part 1: Initial
 
