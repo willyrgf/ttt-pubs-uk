@@ -1,5 +1,33 @@
 # ttt-pubs-uk
 
+# To run using the script
+
+## Using docker-compose:
+### Requirements
+- docker-compose
+```sh
+sudo ./start_all.sh
+```
+
+## Without using docker-compose
+### Requirements
+- PostgreSQL >= 13
+- postgis
+- pg_cron
+- pg_partman
+
+```sh
+# run the script of the standalone way (without docker-compose)
+# the connection can be configured easily inside the script
+# the default are: postgres://postgres:example@127.0.0.1:54325
+sudo ./start_all.sh -s
+```
+
+
+--
+
+# More details of the each question
+
 # Part 1: Initial
 
 ## 1. Create and Populate tables
